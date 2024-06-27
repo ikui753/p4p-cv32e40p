@@ -31,9 +31,9 @@
 module cv32e40p_core
   import cv32e40p_apu_core_pkg::*;
 #(
-    parameter PULP_XPULP          =  0,                   // PULP ISA Extension (incl. custom CSRs and hardware loop, excl. p.elw)
-    parameter PULP_CLUSTER = 0,  // PULP Cluster interface (incl. p.elw)
-    parameter FPU = 0,  // Floating Point Unit (interfaced via APU interface)
+    parameter PULP_XPULP          =  1,                   // PULP ISA Extension (incl. custom CSRs and hardware loop, excl. p.elw)
+    parameter PULP_CLUSTER = 1,  // PULP Cluster interface (incl. p.elw)
+    parameter FPU = 1,  // Floating Point Unit (interfaced via APU interface)
     parameter PULP_ZFINX = 0,  // Float-in-General Purpose registers
     parameter NUM_MHPMCOUNTERS = 1
 ) (
