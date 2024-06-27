@@ -1,20 +1,20 @@
 # -*- coding: utf-8 -*-
 #
-#  Copyright (c) 2020 OpenHW Group
-#
-#  Licensed under the Solderpad Hardware Licence, Version 2.0 (the "License");
-#  you may not use this file except in compliance with the License.
+#  Copyright 2024 OpenHW Group and Dolphin Design
+#  SPDX-License-Identifier: Apache-2.0 WITH SHL-2.1
+# 
+#  Licensed under the Solderpad Hardware License v 2.1 (the "License");
+#  you may not use this file except in compliance with the License, or,
+#  at your option, the Apache License version 2.0.
 #  You may obtain a copy of the License at
 # 
-#  https://solderpad.org/licenses/
+#  https://solderpad.org/licenses/SHL-2.1/
 # 
-#  Unless required by applicable law or agreed to in writing, software
+#  Unless required by applicable law or agreed to in writing, any work
 #  distributed under the License is distributed on an "AS IS" BASIS,
 #  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 #  See the License for the specific language governing permissions and
 #  limitations under the License.
-# 
-#  SPDX-License-Identifier: Apache-2.0 WITH SHL-2.0
 #
 ###############################################################################
 #
@@ -38,13 +38,13 @@
 # -- Project information -----------------------------------------------------
 
 project = u'CORE-V CV32E40P User Manual'
-copyright = u'2020, OpenHW Group'
+copyright = u'2024, OpenHW Group'
 author = u'PULP Platform and OpenHW Group'
 
 # The short X.Y version
 version = u''
 # The full version, including alpha/beta/rc tags
-release = u''
+release = u'v1.8.0'
 
 
 # -- General configuration ---------------------------------------------------
@@ -59,8 +59,10 @@ release = u''
 extensions = [
     'sphinx.ext.autodoc',
     'sphinx.ext.todo',
+    'sphinx.ext.imgconverter',
     'recommonmark',
     'sphinxcontrib.inkscapeconverter',
+    'sphinx_github_changelog',
 #    'sphinxcontrib.wavedrom',
 ]
 #wavedrom_html_jsinline = False
@@ -96,6 +98,9 @@ numfig_format = {'figure': 'Figure %s', 'table': 'Table %s', 'code-block': 'List
 # The name of the Pygments (syntax highlighting) style to use.
 pygments_style = None
 
+# Tags for conditional text
+#tags.add('USER')
+#tags.add('PMP')
 
 # -- Options for HTML output -------------------------------------------------
 
@@ -109,15 +114,17 @@ html_theme = 'sphinx_rtd_theme'
 # further.  For a list of options available for each theme, see the
 # documentation.
 #
-html_theme_options = {'style_nav_header_background': '#DDDDDD'}
+html_theme_options = {'style_nav_header_background': '#DDDDDD', 'prev_next_buttons_location': 'both'}
 html_logo = '../images/openhw-landscape.svg'
+html_show_sphinx = False
+html_show_sourcelink = False
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
 #html_static_path = ['ystatic']
 # Set html_static_path to null on the advice of RTDs:
-html_static_path = []
+html_static_path = ['_static']
 
 # Custom sidebar templates, must be a dictionary that maps document names
 # to template names.
@@ -129,6 +136,9 @@ html_static_path = []
 #
 # html_sidebars = {}
 
+html_css_files = [
+  'css/custom.css',
+]
 
 # -- Options for HTMLHelp output ---------------------------------------------
 
@@ -137,6 +147,8 @@ htmlhelp_basename = 'CORE-V_CV32E40P_User_Manual'
 
 
 # -- Options for LaTeX output ------------------------------------------------
+
+latex_logo = '../images/openhw-landscape.png'
 
 latex_elements = {
     # The paper size ('letterpaper' or 'a4paper').
@@ -154,14 +166,15 @@ latex_elements = {
     # Latex figure (float) alignment
     #
     # 'figure_align': 'htbp',
+    'figure_align': 'H',
 }
 
 # Grouping the document tree into LaTeX files. List of tuples
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-    (master_doc, 'CV32E40P_User_Manual.tex', u'CORE-V-Docs Documentation',
-     u'Davide Schiavone', 'manual'),
+    (master_doc, 'CV32E40P_User_Manual.tex', u'CV32E40P User Manual',
+     u'OpenHW Group', 'manual'),
 ]
 
 
