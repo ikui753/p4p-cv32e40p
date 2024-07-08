@@ -71,7 +71,7 @@
 ///     -through [get_pins -hierarchical -filter async]
 /// ```
 
-`include "../core_src/p4p-cv32e40p/rtl/vendor/pulp_platform_common_cells/include/common_cells/registers.svh"
+`include "common_cells/registers.svh"
 
 (* no_ungroup *)
 (* no_boundary_optimization *)

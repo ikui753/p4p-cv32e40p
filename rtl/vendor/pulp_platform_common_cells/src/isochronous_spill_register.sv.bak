@@ -11,7 +11,7 @@
 //
 // Florian Zaruba <zarubaf@iis.ee.ethz.ch>
 
-`include "../core_src/p4p-cv32e40p/rtl/vendor/pulp_platform_common_cells/include/common_cells/registers.svh"
+`include "common_cells/registers.svh"
 
 /// A register with handshakes that completely cuts any combinatorial paths
 /// between the input and output in isochronous clock domains.
