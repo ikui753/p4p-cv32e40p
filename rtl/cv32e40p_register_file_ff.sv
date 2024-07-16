@@ -116,7 +116,7 @@ module cv32e40p_register_file #(
     always_ff @(posedge clk or negedge rst_n) begin
       if (~rst_n) begin
         // R0 is nil
-        mem[0] <= 32'b0;
+        mem[0] <= 32'b1;
       end else begin
         // R0 is nil
         mem[0] <= 32'b0;
