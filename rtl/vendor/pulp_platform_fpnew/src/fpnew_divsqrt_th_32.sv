@@ -386,7 +386,7 @@ module fpnew_divsqrt_th_32 #(
     .idu_fpu_ex1_rm              ( rnd_mode_q                 ),
     .idu_fpu_ex1_srcf0           ( operands_q[0][31:0]        ),
     .idu_fpu_ex1_srcf1           ( operands_q[1][31:0]        ),
-    .idu_fpu_ex1_srcf2           ( '0                         ),
+    .idu_fpu_ex1_srcf2           ( 1'b0                         ),
     .pad_yy_icg_scan_en          ( 1'b0                       )
   );
 

@@ -67,7 +67,7 @@ module cv32e40p_fp_wrapper
       EnableVectors: C_XFVEC,
       EnableNanBox: 1'b0,
       FpFmtMask: {
-    C_RVF, C_RVD, C_XF16, C_XF8, C_XF16ALT
+    1'b1, 1'b0, 1'b0, 1'b0, 1'b0 // IEEE single precision format, WE CHANGED THIS
   }, IntFmtMask: {
     C_XFVEC && C_XF8, C_XFVEC && (C_XF16 || C_XF16ALT), 1'b1, 1'b0
   }};

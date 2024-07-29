@@ -30,7 +30,7 @@
 module cv32e40p_register_file #(
     parameter ADDR_WIDTH = 5,
     parameter DATA_WIDTH = 32,
-    parameter FPU        = 0,
+    parameter FPU        = 1,
     parameter ZFINX      = 0
 ) (
     // Clock and Reset
@@ -116,7 +116,7 @@ module cv32e40p_register_file #(
     always_ff @(posedge clk or negedge rst_n) begin
       if (~rst_n) begin
         // R0 is nil
-        mem[0] <= 32'b1;
+        mem[0] <= 32'b0;
       end else begin
         // R0 is nil
         mem[0] <= 32'b0;
