@@ -26,10 +26,10 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 module cv32e40p_if_stage #(
-    parameter COREV_PULP = 0, // PULP ISA Extension (including PULP specific CSRs and hardware loop, excluding cv.elw)
-    parameter PULP_OBI = 0,  // Legacy PULP OBI behavior
+    parameter COREV_PULP = 1, // PULP ISA Extension (including PULP specific CSRs and hardware loop, excluding cv.elw)
+    parameter PULP_OBI = 0,  // Legacy PULP OBI behavior // PULP OBI 
     parameter PULP_SECURE = 0,
-    parameter FPU = 0,
+    parameter FPU = 1,
     parameter ZFINX = 0
 ) (
     input logic clk,

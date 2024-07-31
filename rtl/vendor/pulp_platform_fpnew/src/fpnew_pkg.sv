@@ -25,11 +25,7 @@ package fpnew_pkg;
   // | FP16       | IEEE binary16    | 16 bit | 5        | 10
   // | FP8        | binary8          |  8 bit | 5        | 2
   // | FP16ALT    | binary16alt      | 16 bit | 8        | 7
-  // | BF16       | bfloat16         | 16 bit | 8        | 7
   // *NOTE:* Add new formats only at the end of the enumeration for backwards compatibilty!
-
-
-  //Added bfloat16
 
   // Encoding for a format
   typedef struct packed {
@@ -37,7 +33,7 @@ package fpnew_pkg;
     int unsigned man_bits;
   } fp_encoding_t;
 
-  localparam int unsigned NUM_FP_FORMATS = 6; // change me to add formats // CHANGED TO 6 FROM 5
+  localparam int unsigned NUM_FP_FORMATS = 5; // change me to add formats
   localparam int unsigned FP_FORMAT_BITS = $clog2(NUM_FP_FORMATS);
 
   // FP formats
@@ -46,8 +42,7 @@ package fpnew_pkg;
     FP64    = 'd1,
     FP16    = 'd2,
     FP8     = 'd3,
-    FP16ALT = 'd4,
-    BF16 = 'd5   // ADDED BFLOAT16
+    FP16ALT = 'd4
     // add new formats here
   } fp_format_e;
 
@@ -57,8 +52,7 @@ package fpnew_pkg;
     '{11, 52}, // IEEE binary64 (double)
     '{5,  10}, // IEEE binary16 (half)
     '{5,  2},  // custom binary8
-    '{8,  7},   // custom binary16alt
-    '{8,  7}   // custom bfloat16
+    '{8,  7}   // custom binary16alt
     // add new formats here
   };
 

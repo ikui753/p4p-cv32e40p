@@ -33,8 +33,8 @@ module cv32e40p_ex_stage
   import cv32e40p_pkg::*;
   import cv32e40p_apu_core_pkg::*;
 #(
-    parameter COREV_PULP       = 0,
-    parameter FPU              = 0,
+    parameter COREV_PULP       = 1,
+    parameter FPU              = 1,
     parameter APU_NARGS_CPU    = 3,
     parameter APU_WOP_CPU      = 6,
     parameter APU_NDSFLAGS_CPU = 15,

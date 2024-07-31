@@ -15,17 +15,17 @@
 
 module fpnew_top #(
   // FPU configuration
-  parameter fpnew_pkg::fpu_features_t       Features       = fpnew_pkg::RV64D_Xsflt,
+  parameter fpnew_pkg::fpu_features_t       Features       = fpnew_pkg::RV32F_Xf16alt_Xfvec,
   parameter fpnew_pkg::fpu_implementation_t Implementation = fpnew_pkg::DEFAULT_NOREGS,
   // PulpDivSqrt = 0 enables T-head-based DivSqrt unit. Supported only for FP32-only instances of Fpnew
   parameter logic                           PulpDivsqrt    = 1'b1,
   parameter type                            TagType        = logic,
   parameter int unsigned                    TrueSIMDClass  = 0,
-  parameter int unsigned                    EnableSIMDMask = 0,
+  parameter int unsigned                    EnableSIMDMask = 0, // enable SIMD MASK IAN
   // Do not change
   localparam int unsigned NumLanes     = fpnew_pkg::max_num_lanes(Features.Width, Features.FpFmtMask, Features.EnableVectors),
   localparam type         MaskType     = logic [NumLanes-1:0],
-  localparam int unsigned WIDTH        = Features.Width,
+  localparam int unsigned WIDTH        = Features.Width, 
   localparam int unsigned NUM_OPERANDS = 3
 ) (
   input logic                               clk_i,
