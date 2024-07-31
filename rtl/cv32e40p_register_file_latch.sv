@@ -33,7 +33,7 @@ module cv32e40p_register_file #(
     parameter ADDR_WIDTH = 5,
     parameter DATA_WIDTH = 32,
     parameter FPU        = 1,
-    parameter ZFINX      = 0
+    parameter ZFINX      = 1
 ) (
     // Clock and Reset
     input logic clk,

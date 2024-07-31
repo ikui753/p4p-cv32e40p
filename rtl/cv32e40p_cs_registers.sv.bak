@@ -1,4 +1,3 @@
-
 // Copyright 2018 ETH Zurich and University of Bologna.
 // Copyright and related rights are licensed under the Solderpad Hardware
 // License, Version 0.51 (the "License"); you may not use this file except in
@@ -34,14 +33,14 @@ module cv32e40p_cs_registers
     parameter N_HWLP           = 2,
     parameter APU              = 0,
     parameter A_EXTENSION      = 0,
-    parameter FPU              = 1, // CHANGED
-    parameter ZFINX            = 1,
+    parameter FPU              = 0,
+    parameter ZFINX            = 0,
     parameter PULP_SECURE      = 0,
     parameter USE_PMP          = 0,
     parameter N_PMP_ENTRIES    = 16,
-    parameter NUM_MHPMCOUNTERS = 1, 
-    parameter COREV_PULP       = 1, // CHANGED
-    parameter COREV_CLUSTER    = 1, // CHANGED
+    parameter NUM_MHPMCOUNTERS = 1,
+    parameter COREV_PULP       = 0,
+    parameter COREV_CLUSTER    = 0,
     parameter DEBUG_TRIGGER_EN = 1
 ) (
     // Clock and Reset
@@ -370,7 +369,7 @@ module cv32e40p_cs_registers
       CSR_MHPMCOUNTER20, CSR_MHPMCOUNTER21, CSR_MHPMCOUNTER22, CSR_MHPMCOUNTER23,
       CSR_MHPMCOUNTER24, CSR_MHPMCOUNTER25, CSR_MHPMCOUNTER26, CSR_MHPMCOUNTER27,
       CSR_MHPMCOUNTER28, CSR_MHPMCOUNTER29, CSR_MHPMCOUNTER30, CSR_MHPMCOUNTER31,
-      CSR_CYCLE, // CYCLE COUNT HERE
+      CSR_CYCLE,
       CSR_INSTRET,
       CSR_HPMCOUNTER3,
       CSR_HPMCOUNTER4,  CSR_HPMCOUNTER5,  CSR_HPMCOUNTER6,  CSR_HPMCOUNTER7,

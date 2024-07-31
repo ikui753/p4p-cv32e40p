@@ -31,12 +31,12 @@ module cv32e40p_decoder
   import cv32e40p_fpu_pkg::*;
 #(
   parameter COREV_PULP        = 1,              // PULP ISA Extension (including PULP specific CSRs and hardware loop, excluding cv.elw)
-  parameter COREV_CLUSTER     = 1,              // PULP ISA Extension cv.elw (need COREV_PULP = 1)
+  parameter COREV_CLUSTER     = 0,              // PULP ISA Extension cv.elw (need COREV_PULP = 1)
   parameter A_EXTENSION       = 0,
-  parameter FPU               = 1, // CHANGED
-  parameter FPU_ADDMUL_LAT    = 1, // CHANGED
-  parameter FPU_OTHERS_LAT    = 1, // CHANGED
-  parameter ZFINX             = 1, // CHANGED
+  parameter FPU               = 0,
+  parameter FPU_ADDMUL_LAT    = 0,
+  parameter FPU_OTHERS_LAT    = 0,
+  parameter ZFINX             = 0,
   parameter PULP_SECURE       = 0,
   parameter USE_PMP           = 0,
   parameter APU_WOP_CPU       = 6,
