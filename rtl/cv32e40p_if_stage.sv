@@ -30,7 +30,7 @@ module cv32e40p_if_stage #(
     parameter PULP_OBI = 0,  // Legacy PULP OBI behavior // PULP OBI 
     parameter PULP_SECURE = 0,
     parameter FPU = 1,
-    parameter ZFINX = 1
+    parameter ZFINX = 0
 ) (
     input logic clk,
     input logic rst_n,

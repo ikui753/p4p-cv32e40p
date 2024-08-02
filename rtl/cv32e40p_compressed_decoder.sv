@@ -26,7 +26,7 @@
 
 module cv32e40p_compressed_decoder #(
     parameter FPU   = 1,
-    parameter ZFINX = 1
+    parameter ZFINX = 0
 ) (
     input  logic [31:0] instr_i,
     output logic [31:0] instr_o,

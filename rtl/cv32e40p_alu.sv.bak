@@ -933,10 +933,6 @@ module cv32e40p_alu
       ALU_AND: result_o = operand_a_i & operand_b_i;
       ALU_OR:  result_o = operand_a_i | operand_b_i;
       ALU_XOR: result_o = operand_a_i ^ operand_b_i;
-		
-		// RELU OPERATION
-		ALU_RELU: result_o = (operand_a_i < 0) ? 0 : operand_a_i; // sets output to 0 if input < 0, else output = input
-
 
       // Shift Operations
       ALU_ADD, ALU_ADDR, ALU_ADDU, ALU_ADDUR,

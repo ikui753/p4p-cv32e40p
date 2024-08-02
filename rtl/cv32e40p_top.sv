@@ -27,9 +27,9 @@ module cv32e40p_top #(
     parameter COREV_PULP = 1, // PULP ISA Extension (incl. custom CSRs and hardware loop, excl. cv.elw)
     parameter COREV_CLUSTER = 1,  // PULP Cluster interface (incl. cv.elw)
     parameter FPU = 1,  // Floating Point Unit (interfaced via APU interface)
-    parameter FPU_ADDMUL_LAT = 1,  // Floating-Point ADDition/MULtiplication computing lane pipeline registers number
-    parameter FPU_OTHERS_LAT = 1,  // Floating-Point COMParison/CONVersion computing lanes pipeline registers number
-    parameter ZFINX = 1,  // Float-in-General Purpose registers
+    parameter FPU_ADDMUL_LAT = 0,  // Floating-Point ADDition/MULtiplication computing lane pipeline registers number
+    parameter FPU_OTHERS_LAT = 0,  // Floating-Point COMParison/CONVersion computing lanes pipeline registers number
+    parameter ZFINX = 0,  // Float-in-General Purpose registers
     parameter NUM_MHPMCOUNTERS = 1
 ) (
     // Clock and Reset

@@ -35,7 +35,7 @@ module cv32e40p_cs_registers
     parameter APU              = 0,
     parameter A_EXTENSION      = 0,
     parameter FPU              = 1, // CHANGED
-    parameter ZFINX            = 1,
+    parameter ZFINX            = 0,
     parameter PULP_SECURE      = 0,
     parameter USE_PMP          = 0,
     parameter N_PMP_ENTRIES    = 16,

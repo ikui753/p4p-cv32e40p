@@ -34,9 +34,9 @@ module cv32e40p_decoder
   parameter COREV_CLUSTER     = 1,              // PULP ISA Extension cv.elw (need COREV_PULP = 1)
   parameter A_EXTENSION       = 0,
   parameter FPU               = 1, // CHANGED
-  parameter FPU_ADDMUL_LAT    = 1, // CHANGED
-  parameter FPU_OTHERS_LAT    = 1, // CHANGED
-  parameter ZFINX             = 1, // CHANGED
+  parameter FPU_ADDMUL_LAT    = 0, // CHANGED
+  parameter FPU_OTHERS_LAT    = 0, // CHANGED
+  parameter ZFINX             = 0, // CHANGED
   parameter PULP_SECURE       = 0,
   parameter USE_PMP           = 0,
   parameter APU_WOP_CPU       = 6,
@@ -934,7 +934,12 @@ module cv32e40p_decoder
             {6'b00_0000, 3'b001}: alu_operator_o = ALU_SLL;   // Shift Left Logical
             {6'b00_0000, 3'b101}: alu_operator_o = ALU_SRL;   // Shift Right Logical
             {6'b10_0000, 3'b101}: alu_operator_o = ALU_SRA;   // Shift Right Arithmetic
-
+				
+				// CUSTOM REG-REG INSTR
+				// =============================================
+				{6'b00_0000, 3'b101}: alu_operator_o = ALU_RELU;   // RELU CUSTOM INSTR
+				// =============================================
+				
             // supported RV32M instructions
             {6'b00_0001, 3'b000}: begin // mul
               alu_en          = 1'b0;
