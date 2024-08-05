@@ -937,7 +937,10 @@ module cv32e40p_decoder
 				
 				// CUSTOM REG-REG INSTR
 				// =============================================
-				{6'b00_0000, 3'b101}: alu_operator_o = ALU_RELU;   // RELU CUSTOM INSTR
+				// {6'b10_0000, 3'b111}: alu_operator_o = ALU_RELU;
+//					alu_operator_o = ALU_RELU;   // RELU CUSTOM INSTR
+//					alu_op_a_mux_sel_o = OP_A_REGB_OR_FWD;
+//					alu_op_b_mux_sel_o = OP_B_REGA_OR_FWD;
 				// =============================================
 				
             // supported RV32M instructions
