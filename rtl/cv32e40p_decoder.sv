@@ -929,19 +929,16 @@ module cv32e40p_decoder
             {6'b00_0000, 3'b010}: alu_operator_o = ALU_SLTS;  // Set Lower Than
             {6'b00_0000, 3'b011}: alu_operator_o = ALU_SLTU;  // Set Lower Than Unsigned
             {6'b00_0000, 3'b100}: alu_operator_o = ALU_XOR;   // Xor
-            {6'b00_0000, 3'b110}: alu_operator_o = ALU_OR;    // Or
+            {6'b00_0000, 3'b110}: alu_operator_o = ALU_OR;    // Or CHANGED TO RELU
             {6'b00_0000, 3'b111}: alu_operator_o = ALU_AND;   // And
             {6'b00_0000, 3'b001}: alu_operator_o = ALU_SLL;   // Shift Left Logical
             {6'b00_0000, 3'b101}: alu_operator_o = ALU_SRL;   // Shift Right Logical
             {6'b10_0000, 3'b101}: alu_operator_o = ALU_SRA;   // Shift Right Arithmetic
 				
-				// CUSTOM REG-REG INSTR
-				// =============================================
-				// {6'b10_0000, 3'b111}: alu_operator_o = ALU_RELU;
-//					alu_operator_o = ALU_RELU;   // RELU CUSTOM INSTR
-//					alu_op_a_mux_sel_o = OP_A_REGB_OR_FWD;
-//					alu_op_b_mux_sel_o = OP_B_REGA_OR_FWD;
-				// =============================================
+            // CUSTOM REG-REG INSTR
+            // =============================================
+            {6'b00_0010, 3'b000}: alu_operator_o = ALU_RELU; // RELU INST
+            // =============================================
 				
             // supported RV32M instructions
             {6'b00_0001, 3'b000}: begin // mul
@@ -2504,7 +2501,7 @@ module cv32e40p_decoder
             end
 
             // Comparisons, always have bit 26 set
-            6'b00000_1: begin // cv.cmpeq
+            6'b00000_1: begin // cv.cmpeq # OPCODE 1
               alu_operator_o  = ALU_EQ;
               imm_b_mux_sel_o = IMMB_VS;
               if (instr_rdata_i[14:12] == 3'b010 || instr_rdata_i[14:12] == 3'b011) begin
@@ -2670,6 +2667,16 @@ module cv32e40p_decoder
                 illegal_insn_o = 1'b1;
               end
             end
+				// ==============================
+				// CUSTOM INSTRUCTIONS HERE
+        // STARTING AT 6'b01111_1
+        // ==============================
+
+          // // RELU CUSTOM INSTRUCTION
+          //   6'b01111_1: begin
+          //     alu_operator_o = ALU_OR; // RELU CUSTOM INSTRUCTION
+          //     regb_used_o          = 1'b1;
+          //   end
 
             default: illegal_insn_o = 1'b1;
           endcase

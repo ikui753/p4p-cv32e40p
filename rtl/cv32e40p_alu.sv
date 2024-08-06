@@ -931,12 +931,12 @@ module cv32e40p_alu
     unique case (operator_i)
       // Standard Operations
       ALU_AND: result_o = operand_a_i & operand_b_i;
-      ALU_OR:  result_o = (operand_a_i[31] == 1'b1) ? 32'h0 : operand_a_i; // sets output to 0 if operand_a is negative, else output = operand_a
-      // result_o = operand_a_i | operand_b_i;
+      // ALU_OR:  result_o = (operand_a_i[31] == 1'b1) ? 32'h0 : operand_a_i; // sets output to 0 if operand_a is negative, else output = operand_a
+      ALU_OR: result_o = operand_a_i | operand_b_i;
       ALU_XOR: result_o = operand_a_i ^ operand_b_i;
 		
-		// RELU OPERATION
-		//ALU_RELU: result_o =  (operand_b_i < 0) ? 32'h0 : operand_b_i; // sets output to 0 if input is -ve, else output = input changed to output b
+      // RELU OPERATION
+      ALU_RELU: result_o = (operand_a_i[31] == 1'b1) ? 32'h0 : operand_a_i; // sets output to 0 if input is -ve, else output = input changed to output b
 
 
       // Shift Operations
