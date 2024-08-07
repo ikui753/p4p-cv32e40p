@@ -935,9 +935,20 @@ module cv32e40p_alu
       ALU_OR: result_o = operand_a_i | operand_b_i;
       ALU_XOR: result_o = operand_a_i ^ operand_b_i;
 		
-      // RELU OPERATION
-      ALU_RELU: result_o = (operand_a_i[31] == 1'b1) ? 32'h0 : operand_a_i; // sets output to 0 if input is -ve, else output = input changed to output b
+      // RELU OPERATIONS
+		  ALU_RELU: result_o = (operand_a_i[31] == 1'b1) ? 32'h0 : operand_a_i; // sets output to 0 if input is -ve, else output = input changed to output b
+      
+      ALU_RELU2: begin
+        result_o[15:0]  = (operand_a_i[15] == 1'b1) ? 16'h0 : operand_a_i[15:0];   // Process lower half-word
+        result_o[31:16] = (operand_a_i[31] == 1'b1) ? 16'h0 : operand_a_i[31:16];  // Process upper half-word
+      end
 
+      ALU_RELU4: begin
+        result_o[7:0]    = (operand_a_i[7]    == 1'b1) ? 8'h0 : operand_a_i[7:0];    // Process lower byte (word 1)
+        result_o[15:8]   = (operand_a_i[15]   == 1'b1) ? 8'h0 : operand_a_i[15:8];   // Process second byte (word 2)
+        result_o[23:16]  = (operand_a_i[23]   == 1'b1) ? 8'h0 : operand_a_i[23:16];  // Process third byte (word 3)
+        result_o[31:24]  = (operand_a_i[31]   == 1'b1) ? 8'h0 : operand_a_i[31:24];  // Process upper byte (word 4) 
+      end
 
       // Shift Operations
       ALU_ADD, ALU_ADDR, ALU_ADDU, ALU_ADDUR,
