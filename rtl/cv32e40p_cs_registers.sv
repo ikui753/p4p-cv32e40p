@@ -1326,7 +1326,7 @@ module cv32e40p_cs_registers
   // ------------------------
   // Events to count
   assign hpm_events[0] = 1'b1;  // cycle counter
-  assign hpm_events[1] = mhpmevent_minstret_i;  // instruction counter
+  assign hpm_events[1] = 1'b0;  // instruction counter                                             
   assign hpm_events[2] = mhpmevent_ld_stall_i;  // nr of load use hazards
   assign hpm_events[3] = mhpmevent_jr_stall_i;  // nr of jump register hazards
   assign hpm_events[4]  = mhpmevent_imiss_i;                             // cycles waiting for instruction fetches, excluding jumps and branches
