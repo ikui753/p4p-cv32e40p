@@ -166,17 +166,17 @@ package cv32e40p_pkg;
 
   parameter MUL_OP_WIDTH = 3;
 
-  typedef enum logic [MUL_OP_WIDTH-1:0] {
-
+typedef enum logic [MUL_OP_WIDTH-1:0] {
     MUL_MAC32 = 3'b000,
     MUL_MSU32 = 3'b001,
     MUL_I     = 3'b010,
     MUL_IR    = 3'b011,
     MUL_DOT8  = 3'b100,
     MUL_DOT16 = 3'b101,
-    MUL_H     = 3'b110
+    MUL_H     = 3'b110,
+    MULH_MAC16 = 3'b111  // New half-word MAC operation
+} mul_opcode_e;
 
-  } mul_opcode_e;
 
   // vector modes
   parameter VEC_MODE32 = 2'b00;

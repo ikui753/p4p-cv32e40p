@@ -955,15 +955,16 @@ module cv32e40p_decoder
               regc_used_o        = 1'b1;
               regc_mux_o         = REGC_ZERO;
               mult_signed_mode_o = 2'b11;
+              //mult_operator_o = MULH_MAC16;
               mult_operator_o    = MUL_H;
             end
             {6'b00_0001, 3'b010}: begin // mulhsu
-              alu_en             = 1'b0;
-              mult_int_en        = 1'b1;
-              regc_used_o        = 1'b1;
-              regc_mux_o         = REGC_ZERO;
-              mult_signed_mode_o = 2'b01;
-              mult_operator_o    = MUL_H;
+              alu_en             = 1'b0;              // Disable ALU for this operation
+              mult_int_en        = 1'b1;              // Enable the multiplier unit
+              regc_used_o        = 1'b1;              // Use register C for accumulation
+              regc_mux_o         = REGC_RD;         // Clear register C (if needed)
+              mult_signed_mode_o = 2'b00;        // 00 = double signed maybe          
+              mult_operator_o    = MULH_MAC16;        // Use the new MULH_MAC16 operator
             end
             {6'b00_0001, 3'b011}: begin // mulhu
               alu_en             = 1'b0;
