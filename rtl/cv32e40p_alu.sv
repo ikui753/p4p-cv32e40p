@@ -949,6 +949,16 @@ module cv32e40p_alu
         result_o[23:16]  = (operand_a_i[23]   == 1'b1) ? 8'h0 : operand_a_i[23:16];  // Process third byte (word 3)
         result_o[31:24]  = (operand_a_i[31]   == 1'b1) ? 8'h0 : operand_a_i[31:24];  // Process upper byte (word 4) 
       end
+		
+		ALU_MAC32: begin 
+			result_o[31:0] =  (operand_c_i) + ($signed(operand_a_i) * $signed(operand_b_i));
+		
+		
+		end 
+		
+		ALU_MAC16: begin
+			result_o[31:0] = (operand_c_i) + ($signed(operand_a_i[31:16]) * $signed(operand_b_i[31:16])) + ($signed(operand_a_i[15:0]) * $signed(operand_b_i[15:0]));  // NO OVERFLow PREVENTION OR PROTECTION
+		end 
 
       // Shift Operations
       ALU_ADD, ALU_ADDR, ALU_ADDU, ALU_ADDUR,

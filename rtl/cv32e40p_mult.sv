@@ -1,3 +1,4 @@
+
 // Copyright 2018 ETH Zurich and University of Bologna.
 // Copyright and related rights are licensed under the Solderpad Hardware
 // License, Version 0.51 (the "License"); you may not use this file except in
@@ -320,11 +321,6 @@ module cv32e40p_mult
   //                                                    //
   ////////////////////////////////////////////////////////
 
-
-    // Declare the necessary logic variables outside the always_comb block
-  logic [15:0] upper_a, lower_a, upper_b, lower_b, upper_product, lower_product;
-  logic [31:0] combined_result;
-
   always_comb begin
     result_o = '0;
 
@@ -348,29 +344,9 @@ module cv32e40p_mult
         end
       end
 
-      MULH_MAC16: begin
-      // Extract upper and lower 16 bits from regOne (op_a_i) and regTwo (op_b_i)
-        assign upper_a = op_a_i[31:16];
-        assign lower_a = op_a_i[15:0];
-        assign upper_b = op_b_i[31:16];
-        assign lower_b = op_b_i[15:0];
-
-        // Perform the two 16-bit multiplications
-        assign upper_product = $signed(upper_a) * $signed(upper_b);
-        assign lower_product = $signed(lower_a) * $signed(lower_b);
-
-        // Add the results of the two multiplications
-        assign combined_result = 8'hAAAAAAAA; // test value
-
-        // Set the final result
-        result_o = combined_result;
-      end
-
-
-
-  default: ;  // default case to suppress unique warning
-  endcase
-end
+      default: ;  // default case to suppress unique warning
+    endcase
+  end
 
   assign ready_o = mulh_ready;
 

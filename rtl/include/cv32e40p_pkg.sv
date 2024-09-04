@@ -90,6 +90,8 @@ package cv32e40p_pkg;
 	 ALU_RELU  = 7'b0100000, // CUSTOM RELU ALU OPERATION
     ALU_RELU2 = 7'b0100001, //  CUSTOM RELU ALU OPERATION SIMD 2 VALUES/ REG
     ALU_RELU4 = 7'b0100010, // CUSTOM RELU ALU OPERATION SIMD 4 VALUES/ REG
+	 ALU_MAC32 = 7'b1000011, // CUSTOM MAC32 ported to ALU 
+	 ALU_MAC16 = 7'b1000100,  // CUSTOM MAC HALF WORD ADDED INST + IN ALU 
 
     ALU_XOR = 7'b0101111,
     ALU_OR  = 7'b0101110,
@@ -173,9 +175,8 @@ typedef enum logic [MUL_OP_WIDTH-1:0] {
     MUL_IR    = 3'b011,
     MUL_DOT8  = 3'b100,
     MUL_DOT16 = 3'b101,
-    MUL_H     = 3'b110,
-    MULH_MAC16 = 3'b111  // New half-word MAC operation
-} mul_opcode_e;
+    MUL_H     = 3'b110
+	 } mul_opcode_e;
 
 
   // vector modes
