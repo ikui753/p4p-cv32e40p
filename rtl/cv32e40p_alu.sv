@@ -961,6 +961,7 @@ module cv32e40p_alu
 			result_o = operand_c_i + (($signed(operand_a_i[31:16]) * $signed(operand_b_i[31:16])) + ($signed(operand_a_i[15:0]) * $signed(operand_b_i[15:0]))); 
 			//result_o[15:0] = operand_c_i[15:0] + ($signed(operand_a_i[15:0]) * $signed(operand_b_i[15:0]));
 		end 
+		
 
       // Shift Operations
       ALU_ADD, ALU_ADDR, ALU_ADDU, ALU_ADDUR,
