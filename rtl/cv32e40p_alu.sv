@@ -957,7 +957,9 @@ module cv32e40p_alu
 		end 
 		
 		ALU_MAC16: begin
-			result_o[31:0] = (operand_c_i) + ($signed(operand_a_i[31:16]) * $signed(operand_b_i[31:16])) + ($signed(operand_a_i[15:0]) * $signed(operand_b_i[15:0]));  // NO OVERFLow PREVENTION OR PROTECTION
+			// result_o[31:0] = (operand_c_i) + ($signed(operand_a_i[31:16]) * $signed(operand_b_i[31:16])) + ($signed(operand_a_i[15:0]) * $signed(operand_b_i[15:0]));  // NO OVERFLow PREVENTION OR PROTECTION
+			result_o = operand_c_i + (($signed(operand_a_i[31:16]) * $signed(operand_b_i[31:16])) + ($signed(operand_a_i[15:0]) * $signed(operand_b_i[15:0]))); 
+			//result_o[15:0] = operand_c_i[15:0] + ($signed(operand_a_i[15:0]) * $signed(operand_b_i[15:0]));
 		end 
 
       // Shift Operations
