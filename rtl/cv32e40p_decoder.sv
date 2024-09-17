@@ -953,6 +953,12 @@ module cv32e40p_decoder
 					alu_operator_o = ALU_MAC16;
 				end 
 				
+				{6'b00_0010, 3'b010}: begin // CUSTOM ALU MAC HALF WORD 32-bit result, 16 bit inputs.
+					regc_used_o = 1'b1;
+               regc_mux_o  = REGC_RD; 
+					alu_operator_o = ALU_MAC8;
+				end 
+				
             // =============================================
 				
             // supported RV32M instructions
